@@ -28,12 +28,45 @@
 </head>
 
 <body>
+    <div style="display: flex;">
+        <div>
+            <h4>Captcha Text</h4>
+            <input type="radio" id="equation" name="captchaType" value="Equation" checked
+                onchange="captchaTextType(this);">
+            <label for=" equation">Equation</label>
+            <br />
+            <input type="radio" id="alphabets" name="captchaType" value="Alphabets" onchange="captchaTextType(this);">
+            <label for="alphabets">Alphabets</label>
+            <br />
+        </div>
+        <div>
+            <h4>Captcha Lines</h4>
+            <input type="radio" id="arcs" name="captchaLine" value="Arcs" checked onchange="captchaLineType(this);">
+            <label for="arcs">Arcs</label>
+            <br />
+            <input type="radio" id="grid" name="captchaLine" value="Grid" onchange="captchaLineType(this);">
+            <label for=" grid">Grid Lines</label>
+            <br />
+        </div>
+        <div>
+            <h4>Other Feature</h4>
+            <input type="checkbox" id="realod" name="otherFeatures" value="Reload" checked
+                onchange="otherFeatures(this);">
+            <label for="arcs">Reload</label>
+            </br>
+            <input type="checkbox" id="audio" name="otherFeatures" value="Audio" checked
+                onchange="otherFeatures(this);">
+            <label for=" grid">Audio</label>
+            </br>
+        </div>
+    </div>
+
     <h2>HTML Forms</h2>
     <form onsubmit="submitForm()">
         <label for="fname">First name:</label><br>
-        <input type="text" id="fname" name="fname" value="John"><br />
+        <input type="text" id="fname" name="fname"><br />
         <label for="lname">Last name:</label><br>
-        <input type="text" id="lname" name="lname" value="Doe"><br />
+        <input type="text" id="lname" name="lname"><br />
         <div id="captchaContainer"></div>
         <input type="submit" value="Submit">
     </form>
