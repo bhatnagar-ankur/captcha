@@ -142,7 +142,6 @@ function getRandomOperator() {
 }
 
 function validateCaptcha() {
-    debugger
     const userAnswer = document.getElementById('captchaValue').value;
     if (defaultOptions.equation) {
         userAnswer = Number(userAnswer);
@@ -164,12 +163,10 @@ function playAudio() {
 
 function playAudio_Test_Optimize() {
     try {
-        debugger
         const messageParts = captchaText.split(' ');
         let currentIndex = 0;
 
         const speak = (textToSpeak) => {
-            debugger
             const msg = new SpeechSynthesisUtterance();
             const voices = window.speechSynthesis.getVoices();
 
@@ -215,7 +212,6 @@ function getDOMForCaptchaElements() {
     const audio = `<div class="icon-container" title="Spell Captcha" onclick="playAudio()">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="audio"><path d="M12 3a1 1 0 0 0-1 1V20a1 1 0 0 0 2 0V4A1 1 0 0 0 12 3zM8 5A1 1 0 0 0 7 6V18a1 1 0 0 0 2 0V6A1 1 0 0 0 8 5zM4 7A1 1 0 0 0 3 8v8a1 1 0 0 0 2 0V8A1 1 0 0 0 4 7zM16 5a1 1 0 0 0-1 1V18a1 1 0 0 0 2 0V6A1 1 0 0 0 16 5zM20 7a1 1 0 0 0-1 1v8a1 1 0 0 0 2 0V8A1 1 0 0 0 20 7z"></path></svg>
                 </div>`;
-    debugger;
     return `<div class="canvas-and-btn-container">
                 ${basicCaptcha}
                 ${defaultOptions.reload ? reload : ''}
