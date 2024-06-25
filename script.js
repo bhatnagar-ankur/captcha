@@ -1,4 +1,6 @@
+import { initiateCaptcha, validateCaptcha } from './captcha.js';
 initiateCaptcha('captchaContainer');
+addEventListeners();
 
 function submitForm() {
     if (validateCaptcha()) {
@@ -9,19 +11,41 @@ function submitForm() {
     event.preventDefault();
 }
 
-function captchaTextType(src) {
-    initiateCaptcha('captchaContainer', { equation: src.value === 'Equation' });
+function captchaTextType(event) {
+    const selectedValue = event.target.value;
+    initiateCaptcha('captchaContainer', { equation: selectedValue === 'Equation' });
 }
 
-function captchaLineType(src) {
-    initiateCaptcha('captchaContainer', { grid: src.value === 'Grid' });
+function captchaLineType(event) {
+    const selectedValue = event.target.value;
+    initiateCaptcha('captchaContainer', { grid: selectedValue === 'Grid' });
 }
 
-function otherFeatures(src) {
-    if (src.value === 'Audio') {
-        initiateCaptcha('captchaContainer', { audio: src.checked });
+function captchaFeatures(event) {
+    const selectedValue = event.target.value;
+    if (selectedValue === 'Audio') {
+        initiateCaptcha('captchaContainer', { audio: event.target.checked });
     }
-    if (src.value === 'Reload') {
-        initiateCaptcha('captchaContainer', { reload: src.checked });
+    if (selectedValue === 'Reload') {
+        initiateCaptcha('captchaContainer', { reload: event.target.checked });
     }
 }
+
+function addEventListeners() {
+    const radioCaptchaType = document.querySelectorAll('input[name="captchaType"]');
+    for (const radioButton of radioCaptchaType) {
+        radioButton.addEventListener('change', captchaTextType);
+    }
+
+    const radioCaptchaLineType = document.querySelectorAll('input[name="captchaLine"]');
+    for (const radioButton of radioCaptchaLineType) {
+        radioButton.addEventListener('change', captchaLineType);
+    }
+
+    const radioCaptchaFeatures = document.querySelectorAll('input[name="captchaFeatures"]');
+    for (const radioButton of radioCaptchaFeatures) {
+        radioButton.addEventListener('change', captchaFeatures);
+    }
+}
+
+export { submitForm, captchaTextType, captchaLineType, captchaFeatures }

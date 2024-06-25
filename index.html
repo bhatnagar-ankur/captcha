@@ -3,8 +3,8 @@
 
 <head>
     <link href="captcha.css" rel="stylesheet" />
-    <script src="captcha.js" defer></script>
-    <script src="script.js" defer></script>
+    <script type="module" src="captcha.js"></script>
+    <script type="module" src="script.js"></script>
     <style>
         #captcha {
             border: 1px solid grey;
@@ -31,31 +31,28 @@
     <div style="display: flex;">
         <div>
             <h4>Captcha Text</h4>
-            <input type="radio" id="equation" name="captchaType" value="Equation" checked
-                onchange="captchaTextType(this);">
+            <input type="radio" id="equation" name="captchaType" value="Equation" checked />
             <label for=" equation">Equation</label>
             <br />
-            <input type="radio" id="alphabets" name="captchaType" value="Alphabets" onchange="captchaTextType(this);">
+            <input type="radio" id="alphabets" name="captchaType" value="Alphabets" />
             <label for="alphabets">Alphabets</label>
             <br />
         </div>
         <div>
             <h4>Captcha Lines</h4>
-            <input type="radio" id="arcs" name="captchaLine" value="Arcs" checked onchange="captchaLineType(this);">
+            <input type="radio" id="arcs" name="captchaLine" value="Arcs" checked />
             <label for="arcs">Arcs</label>
             <br />
-            <input type="radio" id="grid" name="captchaLine" value="Grid" onchange="captchaLineType(this);">
+            <input type="radio" id="grid" name="captchaLine" value="Grid" />
             <label for=" grid">Grid Lines</label>
             <br />
         </div>
         <div>
             <h4>Other Feature</h4>
-            <input type="checkbox" id="realod" name="otherFeatures" value="Reload" checked
-                onchange="otherFeatures(this);">
+            <input type="checkbox" id="realod" name="captchaFeatures" value="Reload" checked />
             <label for="arcs">Reload</label>
             </br>
-            <input type="checkbox" id="audio" name="otherFeatures" value="Audio" checked
-                onchange="otherFeatures(this);">
+            <input type="checkbox" id="audio" name="captchaFeatures" value="Audio" checked />
             <label for=" grid">Audio</label>
             </br>
         </div>
