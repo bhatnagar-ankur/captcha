@@ -47,7 +47,7 @@ function addEventListeners() {
     }
 
     document.querySelector("#myForm").addEventListener("submit", function (e) {
-        if (validateCaptcha()) {
+        if (captcha.validateCaptcha()) {
             alert('Valid Captcha');
         } else {
             alert('Invalid Captcha');
