@@ -3,11 +3,11 @@ let captchaText = "";
 let operators = [['+', (a, b) => { return a + b; }, 'plus'], ['-', (a, b) => { return a - b; }, 'minus']];
 let alphabets = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
 let defaultOptions = {
-    difficulty: 1,
-    equation: true,
-    grid: false,
-    reload: true,
-    audio: true
+    "equation": true,
+    "grid": false,
+    "reload": true,
+    "audio": true,
+    "hoverColor": '#00bcd4'
 };
 
 function initiateCaptcha(elementId, options) {
@@ -225,7 +225,24 @@ function getDOMForCaptchaElements() {
 }
 
 function getStyle() {
-    return ``;
+    return `#captcha {
+            border: 1px solid grey;
+        }
+
+        .icon-container {
+            display: inline-block;
+            cursor: pointer;
+            width: inherit;
+            height: inherit;
+        }
+
+        .icon-container svg {
+            height: 32px;
+        }
+
+        .icon-container:hover svg {
+            fill: ${defaultOptions.hoverColor};
+} `;
 }
 
 export { initiateCaptcha, validateCaptcha };

@@ -1,5 +1,5 @@
-import { initiateCaptcha, validateCaptcha } from './captcha.js';
-initiateCaptcha('captchaContainer');
+import { initiateCaptcha, validateCaptcha } from './dist/captcha.min.js';
+initiateCaptcha('captchaContainer', { hoverColor: "green" });
 addEventListeners();
 
 function submitForm() {
@@ -46,6 +46,15 @@ function addEventListeners() {
     for (const radioButton of radioCaptchaFeatures) {
         radioButton.addEventListener('change', captchaFeatures);
     }
+
+    document.querySelector("#myForm").addEventListener("submit", function (e) {
+        if (validateCaptcha()) {
+            alert('Valid Captcha');
+        } else {
+            alert('Invalid Captcha');
+        }
+        e.preventDefault();
+    });
 }
 
 export { submitForm, captchaTextType, captchaLineType, captchaFeatures }
