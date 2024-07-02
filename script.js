@@ -1,5 +1,4 @@
-import { initiateCaptcha, validateCaptcha } from './dist/captcha.min.js';
-initiateCaptcha('captchaContainer', { hoverColor: "green" });
+captcha.initiateCaptcha('captchaContainer', { hoverColor: "green" });
 addEventListeners();
 
 function submitForm() {
@@ -13,21 +12,21 @@ function submitForm() {
 
 function captchaTextType(event) {
     const selectedValue = event.target.value;
-    initiateCaptcha('captchaContainer', { equation: selectedValue === 'Equation' });
+    captcha.initiateCaptcha('captchaContainer', { equation: selectedValue === 'Equation' });
 }
 
 function captchaLineType(event) {
     const selectedValue = event.target.value;
-    initiateCaptcha('captchaContainer', { grid: selectedValue === 'Grid' });
+    captcha.initiateCaptcha('captchaContainer', { grid: selectedValue === 'Grid' });
 }
 
 function captchaFeatures(event) {
     const selectedValue = event.target.value;
     if (selectedValue === 'Audio') {
-        initiateCaptcha('captchaContainer', { audio: event.target.checked });
+        captcha.initiateCaptcha('captchaContainer', { audio: event.target.checked });
     }
     if (selectedValue === 'Reload') {
-        initiateCaptcha('captchaContainer', { reload: event.target.checked });
+        captcha.initiateCaptcha('captchaContainer', { reload: event.target.checked });
     }
 }
 
@@ -56,5 +55,3 @@ function addEventListeners() {
         e.preventDefault();
     });
 }
-
-export { submitForm, captchaTextType, captchaLineType, captchaFeatures }
