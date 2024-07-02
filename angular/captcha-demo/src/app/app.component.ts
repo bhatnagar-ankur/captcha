@@ -15,7 +15,7 @@ export class AppComponent implements AfterViewInit {
   title = 'captcha-demo';
 
   ngAfterViewInit(): void {
-    console.log(captcha.initiateCaptcha("captchaContainer"));
+    captcha.initiateCaptcha("captchaContainer");
     // initiateCaptcha('captchaContainer');
   }
 
