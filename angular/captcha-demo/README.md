@@ -1,27 +1,52 @@
-# CaptchaDemo
+# Client Side Captcha - Angular Demo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
+This project has been created to demonstrate the integration of the captcha library.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Authors
 
-## Code scaffolding
+- [@bhatnagar-ankur](https://github.com/bhatnagar-ankur)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Run Locally
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Clone the repo or download the angular project as a zip.
+Or Create an angular project from scratch, [start fresh](https://v17.angular.io/guide/setup-local)
 
-## Running unit tests
+Include the captcha.min.js from the dist folder in the assets folder or desired folder and then update its reference in angular.json file.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```js
+  "scripts": [
+              "src/assets/captcha.min.js"
+            ]
+```
+Open the component page where it needs to be injected. Create a DOM element with an ID where it needs to be injected.
 
-## Running end-to-end tests
+```html
+  <div id="captchaContainer"></div>
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Use the below code to initiate the captcha, 'options' is optional.
 
-## Further help
+```js
+  captcha.initiateCaptcha('captchaContainer', options);
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Use the below code to validate the captcha answer, it returns true or false.
+
+```js
+  captcha.validateCaptcha();
+```
+
+The default value of options are
+
+```js
+  {
+    "equation": true,
+    "grid": false,
+    "reload": true,
+    "audio": true,
+    "hoverColor": '#00bcd4'
+  }
+```
+
