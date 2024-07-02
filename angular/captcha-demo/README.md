@@ -11,7 +11,7 @@ This project has been created to demonstrate the integration of the captcha libr
 ## Run Locally
 
 Clone the repo or download the angular project as a zip.
-Or Create an angular project from scratch, [start fresh](https://v17.angular.io/guide/setup-local)
+Or Create an angular project from scratch, [start fresh](https://angular.dev/tools/cli/setup-local)
 
 Include the captcha.min.js from the dist folder in the assets folder or desired folder and then update its reference in angular.json file.
 
