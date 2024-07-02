@@ -14,7 +14,7 @@ This repository has been created for client-side captcha.
 Download the files from the dist folder.
 
 
-Open the HTML page where it needs to be injected. Create a dom element with an ID where it needs to be injected.
+Open the HTML page where it needs to be injected. Create a DOM element with an ID where it needs to be injected.
 
 ```html
   <div id="captchaContainer"></div>
