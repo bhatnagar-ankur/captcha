@@ -1,5 +1,12 @@
 #captchaContainer {
     padding-top: 10px;
     padding-bottom: 10px;
+}
 
+.optionsContainers {
+    display: flex;
+}
+
+.optionsContainers > div{
+    padding:0 8px;
 }

@@ -17,7 +17,9 @@
         "grid": false,
         "reload": true,
         "audio": true,
-        "hoverColor": '#00bcd4'
+        "hoverColor": '#00bcd4',
+        "refreshIcon": null,
+        "audioIcon": null,
     };
 
     let expectedResult = 0;
@@ -198,10 +200,10 @@
     function getDOMForCaptchaElements() {
         const basicCaptcha = `<canvas id="captcha" width="110" height="30">Sorry, your browser does not support canvas.</canvas >`;
         const reload = `<div id="reloadCaptcha" class="icon-container" title="Reload Captcha">
-                        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 32 32" viewBox="0 0 32 32" id="change"><path d="M12 3H6C4.3457 3 3 4.3457 3 6v6c0 1.6543 1.3457 3 3 3h6c1.6543 0 3-1.3457 3-3V6C15 4.3457 13.6543 3 12 3zM13 12c0 .5518-.4482 1-1 1H6c-.5518 0-1-.4482-1-1V6c0-.5518.4482-1 1-1h6c.5518 0 1 .4482 1 1V12zM26 17h-6c-1.6543 0-3 1.3457-3 3v6c0 1.6543 1.3457 3 3 3h6c1.6543 0 3-1.3457 3-3v-6C29 18.3457 27.6543 17 26 17zM27 26c0 .5518-.4482 1-1 1h-6c-.5518 0-1-.4482-1-1v-6c0-.5518.4482-1 1-1h6c.5518 0 1 .4482 1 1V26zM20.9394 12.3526c.1953.1952.5118.1952.7071-.0001l.707-.707c.1953-.1953.1953-.5119-.0001-.7072L20.4144 9H24c.5523 0 1 .4477 1 1v4.5c0 .2761.2239.5.5.5h1c.2761 0 .5-.2239.5-.5V10c0-1.6569-1.3431-3-3-3h-3.5862l1.9388-1.9395c.1952-.1953.1952-.5118-.0001-.707l-.707-.707c-.1953-.1953-.5119-.1953-.7072.0001l-3.6456 3.6465c-.3904.3904-.3903 1.0235.0002 1.4139L20.9394 12.3526zM11.0606 19.6474c-.1953-.1953-.5118-.1952-.7071.0001l-.707.7069c-.1953.1953-.1953.5119.0001.7072L11.5856 23H8c-.5523 0-1-.4478-1-1v-4.5C7 17.2238 6.7761 17 6.5 17h-1C5.2239 17 5 17.2238 5 17.5V22c0 1.6569 1.3431 3 3 3h3.5862l-1.9388 1.9394c-.1952.1953-.1952.5118.0001.7071l.707.7069c.1953.1953.5119.1953.7072 0l3.6456-3.6465c.3904-.3905.3903-1.0235-.0002-1.4139L11.0606 19.6474z"></path></svg>
+                        ${defaultOptions.refreshIcon ? defaultOptions.refreshIcon : getDefaultRefreshIcon()}
                     </div>`;
         const audio = `<div id="playCaptcha" class="icon-container" title="Spell Captcha">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="audio"><path d="M12 3a1 1 0 0 0-1 1V20a1 1 0 0 0 2 0V4A1 1 0 0 0 12 3zM8 5A1 1 0 0 0 7 6V18a1 1 0 0 0 2 0V6A1 1 0 0 0 8 5zM4 7A1 1 0 0 0 3 8v8a1 1 0 0 0 2 0V8A1 1 0 0 0 4 7zM16 5a1 1 0 0 0-1 1V18a1 1 0 0 0 2 0V6A1 1 0 0 0 16 5zM20 7a1 1 0 0 0-1 1v8a1 1 0 0 0 2 0V8A1 1 0 0 0 20 7z"></path></svg>
+                        ${defaultOptions.audioIcon ? defaultOptions.audioIcon : getDefaultPlayIcon()}
                     </div>`;
         return `<div class="canvas-and-btn-container">
                     ${basicCaptcha}
@@ -210,6 +212,14 @@
                 </div>
                 <input class="captcha-answer-box" type="text" id="captchaValue" placeholder="Captcha Value" />`;
 
+    }
+
+    function getDefaultRefreshIcon() {
+        return `<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 128 128" viewBox="0 0 128 128" id="refresh" style="height:28px"><path d="M10.8 46.8c2.7-5.6 6.5-10.6 10.8-14.8 4.3-4.2 9.2-7.5 14.4-9.9 5.2-2.4 10.6-3.7 15.9-4.2 5.3-.4 10.6 0 15.6 1.4 5 1.3 9.5 3.5 13.5 6.3 2.3 1.6 4.4 3.4 6.3 5.4L71.3 41.5l39.9 8.1 8.1-39.9-13.5 8.9c-2.1-1.9-4.3-3.7-6.6-5.3-11.1-7.8-24.9-12-39.8-11C26.3 4.7 1.3 32.4 2.1 65.6c.1 3.5.5 7 1.1 10.4.1.6.9.9 1.4.6h0C4.9 76.3 5.1 76 5 75.7 4.4 65.5 6.5 55.4 10.8 46.8zM123.3 51.3L123.3 51.3c-.3.2-.4.5-.4.8.6 10.3-1.4 20.5-5.7 29-2.7 5.6-6.5 10.6-10.8 14.8-4.3 4.2-9.2 7.5-14.4 9.9-5.2 2.4-10.6 3.7-15.9 4.2-5.3.4-10.6 0-15.6-1.4-5-1.3-9.6-3.5-13.6-6.3-2.3-1.6-4.3-3.4-6.2-5.3l15.9-10.5-39.9-8.1-8.1 39.9 13.5-8.9c2 1.9 4.2 3.6 6.5 5.2 11.2 7.9 25.2 12.1 40.2 11 33.2-2.5 58.1-30.3 57-63.6-.1-3.5-.5-6.8-1.2-10.1C124.6 51.3 123.9 51 123.3 51.3z"></path></svg>`;
+    }
+
+    function getDefaultPlayIcon() {
+        return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="audio"><path d="M12 3a1 1 0 0 0-1 1V20a1 1 0 0 0 2 0V4A1 1 0 0 0 12 3zM8 5A1 1 0 0 0 7 6V18a1 1 0 0 0 2 0V6A1 1 0 0 0 8 5zM4 7A1 1 0 0 0 3 8v8a1 1 0 0 0 2 0V8A1 1 0 0 0 4 7zM16 5a1 1 0 0 0-1 1V18a1 1 0 0 0 2 0V6A1 1 0 0 0 16 5zM20 7a1 1 0 0 0-1 1v8a1 1 0 0 0 2 0V8A1 1 0 0 0 20 7z"></path></svg>`;
     }
 
     function getStyle() {
