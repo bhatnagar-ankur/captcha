@@ -40,6 +40,8 @@ The default value of options are
     "grid": false,
     "reload": true,
     "audio": true,
-    "hoverColor": '#00bcd4'
+    "hoverColor": '#00bcd4',
+    "refreshIcon": null, // use SVG icon or HTML code to build a custom icon
+    "audioIcon": null,   // use SVG icon or HTML code to build a custom icon
   }
 ```
